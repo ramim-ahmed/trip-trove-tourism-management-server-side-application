@@ -28,7 +28,7 @@ const touristSchema = new Schema({
     required: true,
   },
   average_cost: {
-    type: String,
+    type: Number,
     required: true,
   },
   seasonality: {
