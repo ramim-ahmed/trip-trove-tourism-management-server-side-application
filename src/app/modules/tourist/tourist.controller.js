@@ -21,7 +21,8 @@ const createNewTourist = async (req, res) => {
 
 const getAllTourists = async (req, res) => {
   try {
-    const result = await touristService.getAllTourists();
+    const { average_cost } = req.query;
+    const result = await touristService.getAllTourists(average_cost || "asc");
     res.status(httpStatus.OK).json({
       success: true,
       message: "Tourists fetch all successfully!!",

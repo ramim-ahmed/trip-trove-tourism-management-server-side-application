@@ -5,8 +5,10 @@ const createNewTourist = async (data) => {
   return result;
 };
 
-const getAllTourists = async () => {
-  const result = await Tourist.find().populate("country");
+const getAllTourists = async (average_cost) => {
+  const result = await Tourist.find()
+    .sort({ average_cost })
+    .populate("country");
   return result;
 };
 
