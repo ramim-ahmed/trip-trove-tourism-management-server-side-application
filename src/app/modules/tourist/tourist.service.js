@@ -17,7 +17,9 @@ const getAllTourists = async (country, average_cost) => {
 };
 
 const getMyTouristLists = async (email) => {
-  const result = await Tourist.find({ "user.email": email });
+  const result = await Tourist.find({ "user.email": email }).sort({
+    createdAt: "desc",
+  });
   return result;
 };
 

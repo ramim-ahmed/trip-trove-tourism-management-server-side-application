@@ -58,6 +58,24 @@ const getSingleTourist = async (req, res) => {
   }
 };
 
+const getMyTouristLists = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const result = await touristService.getMyTouristLists(email);
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "My Tourist spot lists is fetch successfully!!",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message: "My Tourist Spot lists is fetch failed!!",
+      error,
+    });
+  }
+};
+
 const udpateTourist = async (req, res) => {
   try {
     const { id } = req.params;
@@ -100,4 +118,5 @@ module.exports.touristController = {
   deleteTourist,
   getSingleTourist,
   udpateTourist,
+  getMyTouristLists,
 };

@@ -3,6 +3,7 @@ const { touristController } = require("./tourist.controller");
 const router = express.Router();
 
 router.get("/", touristController.getAllTourists);
+router.get("/my-lists", touristController.getMyTouristLists);
 router.get("/:id", touristController.getSingleTourist);
 router.post("/create-new", touristController.createNewTourist);
 router.patch("/:id", touristController.udpateTourist);
