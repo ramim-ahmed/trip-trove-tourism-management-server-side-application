@@ -33,7 +33,7 @@ Model
 
 #### Country
 
-      GET /
+      GET /countries
       GET /countries/[id]
       POST countries/create-new
       PATCH /countries/[id]
@@ -43,7 +43,7 @@ Model
 
 #### Tourists
 
-      GET /
+      GET /tourists
       GET /tourists/[id]
       GET /tourists/my-lists/
       POST tourists/create-new
@@ -51,5 +51,12 @@ Model
       DELETE /tourists/[id]
 
 ---
+
+Tech Uses 🔥;
+
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) : As based programming language.
+- [NodeJS](https://nodejs.org/en): That allows to run javascript code in server
+- [Express](https://expressjs.com/): A nodeJS minimalist web framework building server-side application
+- [Mongoose](https://mongoosejs.com/): That help us to model or collection field schema validation in server-side to store data in mongodb
 
 ### follow me [ramim-ahmed](https://ramim-ahmed.vercel.app)
