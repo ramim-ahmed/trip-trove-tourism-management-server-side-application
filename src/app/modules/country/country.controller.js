@@ -19,6 +19,24 @@ const createNewCountry = async (req, res) => {
   }
 };
 
+const getAllCountries = async (req, res) => {
+  try {
+    const result = await countryService.getAllCountries();
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Fetch All Countries successfully!!",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message: "Fetch All Countries failed!!",
+      error,
+    });
+  }
+};
+
 module.exports.countryController = {
   createNewCountry,
+  getAllCountries,
 };

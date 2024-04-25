@@ -5,6 +5,12 @@ const createNewCountry = async (data) => {
   return result;
 };
 
+const getAllCountries = async () => {
+  const result = await Country.find();
+  return result;
+};
+
 module.exports.countryService = {
   createNewCountry,
+  getAllCountries,
 };
