@@ -16,6 +16,10 @@ const getAllTourists = async (country, average_cost) => {
   return result;
 };
 
+const getSingleTourist = async (id) => {
+  const result = await Tourist.findOne({ _id: id });
+  return result;
+};
 const deleteTourist = async (id) => {
   const result = await Tourist.deleteOne({ _id: id });
   return result;
@@ -25,4 +29,5 @@ module.exports.touristService = {
   createNewTourist,
   getAllTourists,
   deleteTourist,
+  getSingleTourist,
 };

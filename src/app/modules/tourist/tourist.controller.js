@@ -7,13 +7,13 @@ const createNewTourist = async (req, res) => {
     const result = await touristService.createNewTourist(data);
     res.status(httpStatus.OK).json({
       success: true,
-      message: "create new tourist successfully!!",
+      message: "create new tourist spot successfully!!",
       data: result,
     });
   } catch (error) {
     res.status(httpStatus.BAD_REQUEST).json({
       success: false,
-      message: "create new tourist failed!!",
+      message: "create new tourist spot failed!!",
       error,
     });
   }
@@ -28,13 +28,31 @@ const getAllTourists = async (req, res) => {
     );
     res.status(httpStatus.OK).json({
       success: true,
-      message: "Tourists fetch all successfully!!",
+      message: "Tourists spot fetch all successfully!!",
       data: result,
     });
   } catch (error) {
     res.status(httpStatus.BAD_REQUEST).json({
       success: false,
-      message: "Tourists fetch all failed!!",
+      message: "Tourists spot fetch all failed!!",
+      error,
+    });
+  }
+};
+
+const getSingleTourist = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await touristService.getSingleTourist(id);
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Tourist spot is fetch successfully!!",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message: "Tourist Spot is fetch failed!!",
       error,
     });
   }
@@ -61,4 +79,5 @@ module.exports.touristController = {
   createNewTourist,
   getAllTourists,
   deleteTourist,
+  getSingleTourist,
 };
