@@ -36,7 +36,46 @@ const getAllCountries = async (req, res) => {
   }
 };
 
+const updateCountry = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = req.body;
+    const result = await countryService.updateCountry(id, data);
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Country is updated successfully!!",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message: "Country is udpated failed!!",
+      error,
+    });
+  }
+};
+
+const deleteCountry = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await countryService.deleteCountry(id);
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Country is deleted successfully!!",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message: "Country is deleted failed!!",
+      error,
+    });
+  }
+};
+
 module.exports.countryController = {
   createNewCountry,
   getAllCountries,
+  updateCountry,
+  deleteCountry,
 };
