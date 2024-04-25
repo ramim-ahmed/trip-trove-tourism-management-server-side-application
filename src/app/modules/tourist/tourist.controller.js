@@ -21,8 +21,11 @@ const createNewTourist = async (req, res) => {
 
 const getAllTourists = async (req, res) => {
   try {
-    const { average_cost } = req.query;
-    const result = await touristService.getAllTourists(average_cost || "asc");
+    const { country, average_cost } = req.query;
+    const result = await touristService.getAllTourists(
+      country,
+      average_cost || "asc"
+    );
     res.status(httpStatus.OK).json({
       success: true,
       message: "Tourists fetch all successfully!!",
@@ -36,7 +39,26 @@ const getAllTourists = async (req, res) => {
     });
   }
 };
+
+const deleteTourist = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await touristService.deleteTourist(id);
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Tourist Spot deleted successfully!!",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message: "Tourist Spot is deleted failed!!",
+      error,
+    });
+  }
+};
 module.exports.touristController = {
   createNewTourist,
   getAllTourists,
+  deleteTourist,
 };
