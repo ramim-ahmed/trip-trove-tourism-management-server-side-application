@@ -36,6 +36,24 @@ const getAllCountries = async (req, res) => {
   }
 };
 
+const getsingleCountry = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await countryService.getSingleCountry(id);
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Country fetch is successfully!!",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message: "Country fetch is failed!!",
+      error,
+    });
+  }
+};
+
 const updateCountry = async (req, res) => {
   try {
     const { id } = req.params;
@@ -78,4 +96,5 @@ module.exports.countryController = {
   getAllCountries,
   updateCountry,
   deleteCountry,
+  getsingleCountry,
 };

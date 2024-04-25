@@ -10,6 +10,11 @@ const getAllCountries = async () => {
   return result;
 };
 
+const getSingleCountry = async (id) => {
+  const result = await Country.findOne({ _id: id });
+  return result;
+};
+
 const updateCountry = async (id, data) => {
   const result = await Country.updateOne({ _id: id }, data);
   return result;
@@ -23,6 +28,7 @@ const deleteCountry = async (id) => {
 module.exports.countryService = {
   createNewCountry,
   getAllCountries,
+  getSingleCountry,
   updateCountry,
   deleteCountry,
 };
