@@ -58,6 +58,25 @@ const getSingleTourist = async (req, res) => {
   }
 };
 
+const udpateTourist = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = req.body;
+    const result = await touristService.updateTourist(id, data);
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Tourist spot is updated successfully!!",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message: "Tourist Spot is updated failed!!",
+      error,
+    });
+  }
+};
+
 const deleteTourist = async (req, res) => {
   try {
     const { id } = req.params;
@@ -80,4 +99,5 @@ module.exports.touristController = {
   getAllTourists,
   deleteTourist,
   getSingleTourist,
+  udpateTourist,
 };
