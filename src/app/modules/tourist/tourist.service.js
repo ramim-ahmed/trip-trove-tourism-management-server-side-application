@@ -26,7 +26,7 @@ const getMyTouristLists = async (email) => {
 };
 
 const getSingleTourist = async (id) => {
-  const result = await Tourist.findOne({ _id: id });
+  const result = await Tourist.findOne({ _id: id }).populate("country");
   return result;
 };
 
