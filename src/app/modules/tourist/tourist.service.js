@@ -11,6 +11,7 @@ const getAllTourists = async (country, average_cost) => {
     result = await Tourist.find({ country: country })
       .sort({ average_cost })
       .populate("country");
+    return result;
   }
   result = await Tourist.find().populate("country").sort({ average_cost });
   return result;
