@@ -12,14 +12,16 @@ const getAllTourists = async (country, average_cost) => {
       .sort({ average_cost })
       .populate("country");
   }
-  result = await Tourist.find().sort({ average_cost }).populate("country");
+  result = await Tourist.find().populate("country").sort({ average_cost });
   return result;
 };
 
 const getMyTouristLists = async (email) => {
-  const result = await Tourist.find({ "user.email": email }).sort({
-    createdAt: "desc",
-  });
+  const result = await Tourist.find({ "user.email": email })
+    .populate("country")
+    .sort({
+      createdAt: "desc",
+    });
   return result;
 };
 
