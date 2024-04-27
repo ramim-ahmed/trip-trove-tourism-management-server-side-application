@@ -60,7 +60,7 @@ const getSingleTourist = async (req, res) => {
 
 const getMyTouristLists = async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email } = req.query;
     const result = await touristService.getMyTouristLists(email);
     res.status(httpStatus.OK).json({
       success: true,
